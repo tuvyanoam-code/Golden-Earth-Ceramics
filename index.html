@@ -3,9 +3,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>קרמיקה בעבודת יד</title>
-<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700&family=Heebo:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700&family=Heebo:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&family=Frank+Ruhl+Libre:wght@300;400;500;700&family=Rubik:wght@300;400;500;600;700&family=Secular+One&family=Alef:wght@400;700&family=Suez+One&family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
 <style>
-:root{--font:'Assistant',sans-serif;--font2:'Heebo',sans-serif;--font3:'Cormorant Garamond',serif;--ease:cubic-bezier(.25,0,.15,1)}
+:root{--font:'Assistant',sans-serif;--fontH:'Cormorant Garamond',serif;--ease:cubic-bezier(.25,0,.15,1)}
 [data-theme="light"]{--bg:#F7F3EE;--bg2:#EDE8E0;--bg3:#FAF8F5;--bg4:#fff;--tx:#2E2820;--tx2:#7A6E62;--tx3:#A89E94;--ac:#9B7B56;--ac2:rgba(155,123,86,.07);--ac3:rgba(155,123,86,.15);--ln:rgba(0,0,0,.06);--nav:rgba(247,243,238,.92);--inp:#FDFCFA;--sh:0 1px 3px rgba(0,0,0,.04);--toast-bg:#2E2820;--toast-tx:#F7F3EE}
 [data-theme="dark"]{--bg:#1A1714;--bg2:#231F1A;--bg3:#2A2520;--bg4:#332D27;--tx:#E8E0D5;--tx2:#A09585;--tx3:#6E6358;--ac:#C9A87A;--ac2:rgba(201,168,122,.08);--ac3:rgba(201,168,122,.15);--ln:rgba(255,255,255,.06);--nav:rgba(26,23,20,.92);--inp:#1E1A16;--sh:0 1px 3px rgba(0,0,0,.2);--toast-bg:#E8E0D5;--toast-tx:#1A1714}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -61,7 +61,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:900;background:var(--nav);backdr
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--toast-bg);color:var(--toast-tx);font-size:13px;font-weight:400;padding:10px 22px;border-radius:4px;z-index:9000;opacity:0;transition:all .35s var(--ease);pointer-events:none;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,.15)}.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:130px 40px 60px}
 .hero-label{font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--ac);margin-bottom:24px;opacity:0;animation:fu .7s var(--ease) .2s forwards}
-.hero h1{font-family:var(--font3);font-size:clamp(36px,6vw,72px);font-weight:300;line-height:1.18;margin-bottom:20px;opacity:0;animation:fu .7s var(--ease) .35s forwards}.hero h1 em{font-style:normal;font-weight:600}
+.hero h1{font-family:var(--fontH);font-size:clamp(36px,6vw,72px);font-weight:300;line-height:1.18;margin-bottom:20px;opacity:0;animation:fu .7s var(--ease) .35s forwards}.hero h1 em{font-style:normal;font-weight:600}
 .hero-sub{font-size:17px;font-weight:300;color:var(--tx2);max-width:480px;line-height:1.9;opacity:0;animation:fu .7s var(--ease) .5s forwards}
 .hero-line{width:44px;height:1px;background:var(--ac);margin:40px auto;opacity:0;animation:fu .7s var(--ease) .55s forwards}
 .discover-wrap{opacity:0;animation:fu .7s var(--ease) .7s forwards;display:flex;flex-direction:column;align-items:center;gap:12px}
@@ -75,20 +75,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:900;background:var(--nav);backdr
 .cat-row{position:relative;overflow:hidden;cursor:pointer;transition:all .5s var(--ease);aspect-ratio:21/7;min-height:200px;background:var(--bg2)}
 .cat-row img.cat-cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}.cat-row:hover img.cat-cover{transform:scale(1.05)}
 .cat-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,.15) 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;transition:background .4s}.cat-row:hover .cat-overlay{background:linear-gradient(135deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.25) 100%)}
-.cat-name{font-family:var(--font3);font-size:clamp(28px,4vw,48px);font-weight:400;color:#fff;letter-spacing:2px;text-shadow:0 2px 20px rgba(0,0,0,.3)}
+.cat-name{font-family:var(--fontH);font-size:clamp(28px,4vw,48px);font-weight:400;color:#fff;letter-spacing:2px;text-shadow:0 2px 20px rgba(0,0,0,.3)}
 .cat-count{font-size:12px;font-weight:300;color:rgba(255,255,255,.6);letter-spacing:2px;text-transform:uppercase}
 .cat-ph{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;height:100%}.cat-ph .cat-name{color:var(--tx2);text-shadow:none;font-size:clamp(22px,3vw,36px)}.cat-ph .cat-count{color:var(--tx3)}
 @media(max-width:768px){.cat-row{aspect-ratio:16/9;min-height:160px}}
 .cat-modal{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,.92);display:none;opacity:0;transition:opacity .35s;overflow-y:auto}.cat-modal.on{display:block;opacity:1}
 .cat-modal-inner{max-width:1100px;margin:0 auto;padding:60px 40px 80px}
 .cat-modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:36px}
-.cat-modal-title{font-family:var(--font3);font-size:clamp(24px,3.5vw,42px);font-weight:400;color:#fff}
+.cat-modal-title{font-family:var(--fontH);font-size:clamp(24px,3.5vw,42px);font-weight:400;color:#fff}
 .cat-modal-close{background:none;border:none;color:rgba(255,255,255,.45);font-size:13px;letter-spacing:1px;text-transform:uppercase;transition:color .3s;font-family:var(--font)}.cat-modal-close:hover{color:#fff}
 .cat-modal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px}
 .cm-img-wrap{position:relative;overflow:hidden;border-radius:2px}.cm-img-wrap img{width:100%;aspect-ratio:1/1;object-fit:cover;cursor:pointer;transition:opacity .3s,transform .3s;display:block}.cm-img-wrap:hover img{opacity:.88;transform:scale(1.02)}
 .cm-add-cart{position:absolute;bottom:10px;background:rgba(0,0,0,.65);backdrop-filter:blur(6px);color:#fff;border:none;font-family:var(--font);font-size:11px;font-weight:500;letter-spacing:.4px;padding:7px 13px;border-radius:3px;opacity:0;transform:translateY(6px);transition:all .3s var(--ease);display:flex;align-items:center;gap:5px}
 [dir="rtl"] .cm-add-cart{left:10px}.cm-img-wrap:hover .cm-add-cart{opacity:1;transform:translateY(0)}.cm-add-cart:hover{background:var(--ac)}.cm-add-cart svg{width:13px;height:13px}.cm-add-cart.added{background:#3a7d44;pointer-events:none}
 .cat-modal-empty{color:rgba(255,255,255,.25);font-size:14px;font-weight:300;text-align:center;padding:80px 20px}
+.cm-prod-info{position:absolute;bottom:0;left:0;right:0;padding:12px;background:linear-gradient(to top,rgba(0,0,0,.6),transparent);pointer-events:none}.cm-prod-name{color:#fff;font-size:13px;font-weight:500}.cm-prod-count{color:rgba(255,255,255,.5);font-size:10.5px;margin-inline-start:6px}
+.prod-modal{z-index:2050}
 @media(max-width:768px){.cat-modal-inner{padding:40px 16px 60px}.cat-modal-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:4px}}
 .fv{position:fixed;inset:0;z-index:2100;background:rgba(0,0,0,.96);display:none;align-items:center;justify-content:center;cursor:pointer}.fv.on{display:flex}.fv img{max-width:90%;max-height:90vh;object-fit:contain}
 .cclay{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}.cch3{font-size:20px;font-weight:400;margin-bottom:18px}.ccp{font-size:14.5px;font-weight:300;color:var(--tx2);line-height:1.8;margin-bottom:32px}.ccl{font-size:13.5px;color:var(--tx2);margin-bottom:10px;font-weight:300}.ccl strong{font-weight:500;color:var(--tx);display:inline-block;min-width:55px}
@@ -169,6 +171,8 @@ footer{padding:36px 0;text-align:center;font-size:11.5px;color:var(--tx3);font-w
 <section class="sec" id="contact"><div class="ctn rv"><div class="slbl" id="ccLbl"></div><h2 id="ccTtl"></h2><p class="sdesc" id="ccDsc"></p><div class="cclay"><div><h3 class="cch3" id="ccH"></h3><p class="ccp" id="ccP"></p><div class="ccl"><strong id="ccEL">דוא״ל</strong> <span id="ccE"></span></div><div class="ccl"><strong id="ccPL">טלפון</strong> <span id="ccPh"></span></div></div><div><div id="fWrap"><div class="ff"><label id="flN">שם מלא</label><input id="fN" dir="rtl"></div><div class="ff"><label id="flE">דוא״ל</label><input id="fE" type="email" dir="rtl"></div><div class="ff"><label id="flM">הודעה</label><textarea id="fM" dir="rtl"></textarea></div><button class="fbtn" onclick="sendForm()" id="fBtn">שליחת פנייה</button></div><div class="fok" id="fOk"><h4 id="foT">הפנייה נשלחה!</h4><p id="foP">נחזור אליכם בהקדם.</p></div></div></div></div></section>
 <footer><div class="ctn"><span id="ftr"></span></div></footer>
 <div class="cat-modal" id="catModal"><div class="cat-modal-inner"><div class="cat-modal-head"><span class="cat-modal-title" id="cmTitle"></span><button class="cat-modal-close" onclick="closeCatModal()">סגור ✕</button></div><div class="cat-modal-grid" id="cmGrid"></div></div></div>
+<!-- Product detail modal -->
+<div class="cat-modal prod-modal" id="prodModal"><div class="cat-modal-inner"><div class="cat-modal-head"><span class="cat-modal-title" id="pmTitle"></span><button class="cat-modal-close" onclick="closeProdModal()">← חזרה</button></div><div class="cat-modal-grid" id="pmImgs"></div></div></div>
 <div class="fv" id="fvw" onclick="this.classList.remove('on')"><img id="fvI"></div>
 <div class="authm" id="authM"><div class="authb"><h3>ניהול האתר</h3><p>הזינו את קוד הגישה</p><input type="password" id="auIn" maxlength="20" placeholder="····" onkeydown="if(event.key==='Enter')checkAuth()"><button class="authbtn" onclick="checkAuth()">כניסה</button><button class="authc" onclick="closeAuth()">ביטול</button></div></div>
 
@@ -180,8 +184,8 @@ footer{padding:36px 0;text-align:center;font-size:11.5px;color:var(--tx3);font-w
 <button class="atb" onclick="sp('pPw',this)">הגדרות</button>
 <button class="adbk" onclick="clAdmin()">→ חזרה לאתר</button></aside>
 <main class="adm-main">
-<div class="adp on" id="pH"><h2>כותרת ראשית</h2><p class="sub">האזור הראשון שמופיע באתר</p><div class="af"><label>שם האתר</label><input id="aLoHe"></div><div class="af"><label>תווית</label><input id="aLbHe"></div><div class="af"><label>כותרת ראשית</label><input id="aTiHe"></div><div class="af"><label>תיאור קצר</label><textarea id="aDsHe"></textarea></div><div class="af"><label>טקסט כפתור</label><input id="aDiscBtn"></div><button class="asv" onclick="svH()">שמור</button><span class="aok" id="okH">נשמר</span></div>
-<div class="adp" id="pG"><h2>קטגוריות ומוצרים</h2><p class="sub">הוסיפו קטגוריות והעלו תמונות</p><h4 style="font-weight:500;margin-bottom:10px">קטגוריות</h4><div id="aCatList"></div><div class="arow"><div class="af" style="margin:0"><label>שם הקטגוריה</label><input id="nCatName" style="max-width:200px"></div><button class="asb" onclick="addCat()">+ הוסף</button></div><hr class="adiv"><h4 style="font-weight:500;margin-bottom:10px">תמונות לפי קטגוריה</h4><div id="aCatItems"></div></div>
+<div class="adp on" id="pH"><h2>כותרת ראשית</h2><p class="sub">תוכן ופונטים</p><div class="af"><label>שם האתר</label><input id="aLoHe"></div><div class="af"><label>תווית</label><input id="aLbHe"></div><div class="af"><label>כותרת ראשית</label><input id="aTiHe"></div><div class="af"><label>תיאור קצר</label><textarea id="aDsHe"></textarea></div><div class="af"><label>טקסט כפתור</label><input id="aDiscBtn"></div><hr class="adiv"><div class="af"><label>פונט כותרות</label><select id="aFontH"><option>Cormorant Garamond</option><option>Assistant</option><option>Heebo</option><option>Frank Ruhl Libre</option><option>Rubik</option><option>Secular One</option><option>Alef</option><option>Suez One</option><option>Amatic SC</option></select></div><div class="af"><label>פונט גוף</label><select id="aFontB"><option>Assistant</option><option>Heebo</option><option>Rubik</option><option>Frank Ruhl Libre</option><option>Alef</option></select></div><button class="asv" onclick="svH()">שמור</button><span class="aok" id="okH">נשמר</span></div>
+<div class="adp" id="pG"><h2>קטגוריות ומוצרים</h2><p class="sub">הוסיפו קטגוריות, מוצרים ותמונות</p><h4 style="font-weight:500;margin-bottom:10px">קטגוריות</h4><div id="aCatList"></div><div class="arow"><div class="af" style="margin:0"><label>שם הקטגוריה</label><input id="nCatName" style="max-width:200px"></div><button class="asb" onclick="addCat()">+ הוסף</button></div><hr class="adiv"><h4 style="font-weight:500;margin-bottom:10px">מוצרים</h4><div class="arow"><div class="af" style="margin:0"><label>שם המוצר</label><input id="nProdName" style="max-width:180px"></div><div class="af" style="margin:0"><label>קטגוריה</label><select id="nProdCat" style="max-width:160px"></select></div><button class="asb" onclick="addProd()">+ הוסף מוצר</button></div><div id="aProdList"></div></div>
 <div class="adp" id="pC"><h2>צור קשר</h2><p class="sub">פרטי התקשרות</p><div class="af"><label>כותרת</label><input id="aCcHhe"></div><div class="af"><label>תיאור</label><textarea id="aCcPhe"></textarea></div><div class="af"><label>תיאור קצר</label><textarea id="aCcDhe"></textarea></div><div class="af"><label>דוא״ל</label><input id="aCcE"></div><div class="af"><label>טלפון</label><input id="aCcPh"></div><button class="asv" onclick="svC()">שמור</button><span class="aok" id="okC">נשמר</span></div>
 <div class="adp" id="pM"><h2>הודעות</h2><p class="sub">פניות מהטופס</p><div id="aMsL"></div></div>
 <div class="adp" id="pPw"><h2>הגדרות</h2><p class="sub">גישה ומפתחות</p>
@@ -218,8 +222,9 @@ const AK = 'ceramics_auth'; // sessionStorage only for admin pw
 const DEFAULTS = {
   pw:"1234", imgbbKey:"", w3key:"",
   logo:"קרמיקה בעבודת יד",
+  fonts:{hero:'Cormorant Garamond',body:'Assistant'},
   hero:{label:"קרמיקה · עבודת יד · אומנות",title:'כלי קרמיקה <em>בעבודת יד</em>',desc:"כל כלי נוצר ביד אוהבת, בתהליך ארוך ומדוקדק. חתיכות ייחודיות שמביאות חום ואופי לכל בית.",discoverBtn:"להתגלות"},
-  cats:[{name:"צלחות",coverImg:"",imgs:[]},{name:"קערות",coverImg:"",imgs:[]},{name:"כוסות",coverImg:"",imgs:[]},{name:"אגרטלים",coverImg:"",imgs:[]}],
+  cats:[{name:"צלחות",coverImg:"",products:[]},{name:"קערות",coverImg:"",products:[]},{name:"כוסות",coverImg:"",products:[]},{name:"אגרטלים",coverImg:"",products:[]}],
   ctc:{label:"צור קשר",title:"צרו קשר",desc:"נשמח לשמוע מכם — לשאלות, הזמנות מיוחדות, או סתם לומר שלום.",sideTitle:"דברו איתנו",sideText:"אנחנו תמיד כאן בשבילכם. שלחו הודעה ונחזור אליכם בהקדם.",email:"",phone:""},
   messages:[]
 };
@@ -241,6 +246,8 @@ async function init(){
     const doc = await fbDb.collection('site').doc(SITE_DOC).get();
     if(doc.exists){
       D = {...JSON.parse(JSON.stringify(DEFAULTS)), ...doc.data()};
+      // Migrate old flat imgs[] to products[]
+      D.cats.forEach(c=>{if(c.imgs&&!c.products){c.products=c.imgs.map((img,i)=>({name:'פריט '+(i+1),imgs:[img]}));delete c.imgs;}if(!c.products)c.products=[];});
     } else {
       // First time — seed Firestore with defaults
       D = JSON.parse(JSON.stringify(DEFAULTS));
@@ -252,6 +259,8 @@ async function init(){
   }
 
   setTh(localStorage.getItem('theme')||'light'); // theme is local preference only
+  if(!D.fonts)D.fonts={hero:'Cormorant Garamond',body:'Assistant'};
+  applyFonts();
   render();
   updateBdg();
   initObs();
@@ -273,6 +282,12 @@ async function init(){
 async function saveD(){
   try{ await fbDb.collection('site').doc(SITE_DOC).set(D); }
   catch(e){ console.error('Save error:',e); showToast('שגיאה בשמירה'); }
+}
+
+function applyFonts(){
+  const f=D.fonts||{hero:'Cormorant Garamond',body:'Assistant'};
+  document.documentElement.style.setProperty('--font',"'"+f.body+"',sans-serif");
+  document.documentElement.style.setProperty('--fontH',"'"+f.hero+"',serif");
 }
 
 // ============================================================
@@ -320,11 +335,11 @@ async function saveCart(){
   if(!fbDb||!currentUser)return;
   try{await fbDb.collection('carts').doc(currentUser.uid).set({items:cart,updatedAt:firebase.firestore.FieldValue.serverTimestamp(),user:currentUser.displayName||'',email:currentUser.email||''},{merge:true});}catch(e){}
 }
-function addToCart(ci,ii){
+function addToCart(ci,pi){
   if(!currentUser){showToast('יש להתחבר קודם');return;}
-  const cat=D.cats[ci];if(!cat||!cat.imgs||!cat.imgs[ii])return;
-  if(cart.find(c=>c.ci===ci&&c.ii===ii)){showToast('כבר בסל');return;}
-  cart.push({img:cat.imgs[ii],catName:cat.name,ci,ii,at:new Date().toISOString()});
+  const prod=D.cats[ci]?.products?.[pi];if(!prod||!prod.imgs||!prod.imgs.length)return;
+  if(cart.find(c=>c.ci===ci&&c.pi===pi)){showToast('כבר בסל');return;}
+  cart.push({img:prod.imgs[0],prodName:prod.name,catName:D.cats[ci].name,ci,pi,at:new Date().toISOString()});
   saveCart();renderCart();showToast('נוסף לסל!');
   const b=document.getElementById('cartBadge');b.classList.remove('pop');void b.offsetWidth;b.classList.add('pop');
 }
@@ -333,7 +348,7 @@ function renderCart(){
   const body=document.getElementById('cartBody'),badge=document.getElementById('cartBadge'),footer=document.getElementById('cartFooter');
   badge.textContent=cart.length;badge.style.display=cart.length?'flex':'none';
   if(!cart.length){body.innerHTML='<div class="cart-empty">הסל ריק</div>';footer.innerHTML='<p>הפריטים נשמרים בחשבון שלך</p>';return;}
-  body.innerHTML=cart.map((it,i)=>`<div class="cart-item"><img src="${it.img}" alt=""><div class="cart-item-info"><div class="cart-item-name">${it.catName}</div><div class="cart-item-cat">פריט #${it.ii+1}</div><button class="cart-item-rm" onclick="rmCart(${i})">הסר מהסל</button></div></div>`).join('');
+  body.innerHTML=cart.map((it,i)=>`<div class="cart-item"><img src="${it.img}" alt=""><div class="cart-item-info"><div class="cart-item-name">${it.prodName||it.catName}</div><div class="cart-item-cat">${it.catName}</div><button class="cart-item-rm" onclick="rmCart(${i})">הסר מהסל</button></div></div>`).join('');
   footer.innerHTML=`<textarea class="cart-order-note" id="orderNote" placeholder="הערות להזמנה (לא חובה)..." dir="rtl"></textarea><button class="cart-order-btn" id="orderBtn" onclick="sendOrder()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>שלח הזמנה (${cart.length} פריטים)</button><p>הפריטים נשמרים בחשבון שלך</p>`;
 }
 function toggleCart(){document.getElementById('cartPanel').classList.toggle('on');document.getElementById('cartOverlay').classList.toggle('on');}
@@ -343,7 +358,7 @@ async function sendOrder(){
   const btn=document.getElementById('orderBtn');btn.disabled=true;btn.innerHTML='שולח...';
   const note=document.getElementById('orderNote')?document.getElementById('orderNote').value.trim():'';
   const userName=currentUser?currentUser.displayName:'אורח',userEmail=currentUser?currentUser.email:'';
-  const itemsList=cart.map((it,i)=>`${i+1}. ${it.catName} — פריט #${it.ii+1}\n   תמונה: ${it.img}`).join('\n');
+  const itemsList=cart.map((it,i)=>`${i+1}. ${it.prodName||'פריט'} (${it.catName})\n   תמונה: ${it.img}`).join('\n');
   const msgBody=`הזמנה חדשה!\n\nשם: ${userName}\nמייל: ${userEmail}\n\nפריטים (${cart.length}):\n${itemsList}\n\n${note?'הערות: '+note:''}`;
   let sent=false;
   if(D.w3key){try{const r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({access_key:D.w3key,subject:'הזמנה חדשה מ-'+userName+' ('+cart.length+' פריטים)',from_name:userName,replyto:userEmail,name:userName,email:userEmail,message:msgBody})});const j=await r.json();sent=j.success;}catch(e){}}
@@ -369,20 +384,44 @@ function render(){
 }
 function renderCats(){
   const l=document.getElementById('catList');if(!D.cats||!D.cats.length){l.innerHTML='<div class="aep">עדיין לא הוגדרו קטגוריות</div>';return;}
-  l.innerHTML=D.cats.map((c,i)=>{const n=c.imgs?c.imgs.length:0,cv=c.coverImg||(c.imgs&&c.imgs[0])||'';
+  l.innerHTML=D.cats.map((c,i)=>{
+    const n=c.products?c.products.length:0;
+    const cv=c.coverImg||(c.products&&c.products.length&&c.products[0].imgs&&c.products[0].imgs[0])||'';
     return cv?`<div class="cat-row" onclick="openCatModal(${i})"><img class="cat-cover" src="${cv}" alt="${c.name}"><div class="cat-overlay"><span class="cat-name">${c.name}</span><span class="cat-count">${n} פריטים</span></div></div>`
     :`<div class="cat-row" onclick="openCatModal(${i})" style="background:var(--bg2)"><div class="cat-ph cat-overlay" style="background:none"><span class="cat-name">${c.name}</span><span class="cat-count">${n} פריטים</span></div></div>`;}).join('');
 }
-function openCatModal(i){
-  const cat=D.cats[i];document.getElementById('cmTitle').textContent=cat.name;const g=document.getElementById('cmGrid');
-  if(!cat.imgs||!cat.imgs.length){g.innerHTML='<div class="cat-modal-empty">עדיין לא הועלו תמונות</div>';}
-  else{g.innerHTML=cat.imgs.map((s,ii)=>{const ic=cart.find(c=>c.ci===i&&c.ii===ii);
-    return `<div class="cm-img-wrap"><img src="${s}" onclick="event.stopPropagation();document.getElementById('fvI').src='${s}';document.getElementById('fvw').classList.add('on')"><button class="cm-add-cart ${ic?'added':''}" onclick="event.stopPropagation();addToCartModal(${i},${ii},this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="${ic?'M20 6L9 17l-5-5':'M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0'}"/></svg>${ic?'בסל':'לסל'}</button></div>`;}).join('');}
+function openCatModal(ci){
+  const cat=D.cats[ci];document.getElementById('cmTitle').textContent=cat.name;const g=document.getElementById('cmGrid');
+  if(!cat.products||!cat.products.length){g.innerHTML='<div class="cat-modal-empty">עדיין לא הועלו מוצרים</div>';}
+  else{g.innerHTML=cat.products.map((p,pi)=>{
+    const thumb=p.imgs&&p.imgs[0]||'';const ic=cart.find(c=>c.ci===ci&&c.pi===pi);const imgCount=p.imgs?p.imgs.length:0;
+    return `<div class="cm-img-wrap" onclick="openProdModal(${ci},${pi})" style="cursor:pointer">
+      ${thumb?`<img src="${thumb}" alt="${p.name}">`:`<div style="aspect-ratio:1/1;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.2);font-size:13px">${p.name}</div>`}
+      <div class="cm-prod-info"><span class="cm-prod-name">${p.name}</span>${imgCount>1?`<span class="cm-prod-count">${imgCount} תמונות</span>`:''}</div>
+      <button class="cm-add-cart ${ic?'added':''}" onclick="event.stopPropagation();addToCartFromGrid(${ci},${pi},this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="${ic?'M20 6L9 17l-5-5':'M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0'}"/></svg>${ic?'בסל':'לסל'}</button>
+    </div>`;}).join('');}
   document.getElementById('catModal').classList.add('on');document.body.style.overflow='hidden';
 }
 function closeCatModal(){document.getElementById('catModal').classList.remove('on');document.body.style.overflow='';}
-function addToCartModal(ci,ii,btn){addToCart(ci,ii);if(currentUser){btn.classList.add('added');btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>בסל';}}
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeCatModal();document.getElementById('fvw').classList.remove('on');if(document.getElementById('cartPanel').classList.contains('on'))toggleCart();}});
+function addToCartFromGrid(ci,pi,btn){addToCart(ci,pi);if(currentUser){btn.classList.add('added');btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>בסל';}}
+
+// Product detail modal
+function openProdModal(ci,pi){
+  const prod=D.cats[ci].products[pi];
+  document.getElementById('pmTitle').textContent=prod.name;
+  const g=document.getElementById('pmImgs');
+  if(!prod.imgs||!prod.imgs.length){g.innerHTML='<div class="cat-modal-empty">אין תמונות</div>';}
+  else{g.innerHTML=prod.imgs.map(src=>`<img src="${src}" style="cursor:pointer" onclick="document.getElementById('fvI').src='${src}';document.getElementById('fvw').classList.add('on')">`).join('');}
+  document.getElementById('prodModal').classList.add('on');
+}
+function closeProdModal(){document.getElementById('prodModal').classList.remove('on');}
+
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){
+  if(document.getElementById('fvw').classList.contains('on')){document.getElementById('fvw').classList.remove('on');return;}
+  if(document.getElementById('prodModal').classList.contains('on')){closeProdModal();return;}
+  if(document.getElementById('catModal').classList.contains('on')){closeCatModal();return;}
+  if(document.getElementById('cartPanel').classList.contains('on'))toggleCart();
+}});
 
 // ============================================================
 // CONTACT FORM
@@ -411,37 +450,46 @@ function clAdmin(){document.getElementById('admP').classList.remove('on');docume
 function sp(id,btn){document.querySelectorAll('.adp').forEach(p=>p.classList.remove('on'));document.getElementById(id).classList.add('on');document.querySelectorAll('.atb').forEach(b=>b.classList.remove('on'));btn.classList.add('on');if(id==='pG')rAG();if(id==='pM')rMs();}
 function fl(id){const e=document.getElementById(id);e.classList.add('on');setTimeout(()=>e.classList.remove('on'),1500);}
 
-function populateAdmin(){const $=id=>document.getElementById(id);$('aLoHe').value=D.logo;$('aLbHe').value=D.hero.label;$('aTiHe').value=D.hero.title;$('aDsHe').value=D.hero.desc;$('aDiscBtn').value=D.hero.discoverBtn||'';$('aCcHhe').value=D.ctc.sideTitle;$('aCcPhe').value=D.ctc.sideText;$('aCcDhe').value=D.ctc.desc;$('aCcE').value=D.ctc.email;$('aCcPh').value=D.ctc.phone;$('aPwIn').value=D.pw;$('aImgKey').value=D.imgbbKey||'';$('aW3Key').value=D.w3key||'';rAG();}
+function populateAdmin(){const $=id=>document.getElementById(id);$('aLoHe').value=D.logo;$('aLbHe').value=D.hero.label;$('aTiHe').value=D.hero.title;$('aDsHe').value=D.hero.desc;$('aDiscBtn').value=D.hero.discoverBtn||'';
+  if(D.fonts){$('aFontH').value=D.fonts.hero;$('aFontB').value=D.fonts.body;}
+  $('aCcHhe').value=D.ctc.sideTitle;$('aCcPhe').value=D.ctc.sideText;$('aCcDhe').value=D.ctc.desc;$('aCcE').value=D.ctc.email;$('aCcPh').value=D.ctc.phone;$('aPwIn').value=D.pw;$('aImgKey').value=D.imgbbKey||'';$('aW3Key').value=D.w3key||'';rAG();}
 
-async function svH(){const $=id=>document.getElementById(id).value;D.logo=$('aLoHe');D.hero.label=$('aLbHe');D.hero.title=$('aTiHe');D.hero.desc=$('aDsHe');D.hero.discoverBtn=$('aDiscBtn');await saveD();fl('okH');}
+async function svH(){const $=id=>document.getElementById(id).value;D.logo=$('aLoHe');D.hero.label=$('aLbHe');D.hero.title=$('aTiHe');D.hero.desc=$('aDsHe');D.hero.discoverBtn=$('aDiscBtn');
+  if(!D.fonts)D.fonts={};D.fonts.hero=$('aFontH');D.fonts.body=$('aFontB');applyFonts();
+  await saveD();fl('okH');}
 async function svC(){const $=id=>document.getElementById(id).value;D.ctc.sideTitle=$('aCcHhe');D.ctc.sideText=$('aCcPhe');D.ctc.desc=$('aCcDhe');D.ctc.email=$('aCcE');D.ctc.phone=$('aCcPh');await saveD();fl('okC');}
 async function svPw(){D.pw=document.getElementById('aPwIn').value;await saveD();fl('okPw');}
 async function svImgKey(){D.imgbbKey=document.getElementById('aImgKey').value.trim();await saveD();fl('okImgK');}
 async function svW3Key(){D.w3key=document.getElementById('aW3Key').value.trim();await saveD();fl('okW3K');}
 
 function rAG(){
+  // Categories tags
   document.getElementById('aCatList').innerHTML=D.cats.map((c,i)=>`<span class="atag">${c.name} <span class="rm" onclick="rmCat(${i})">×</span></span>`).join('')||'<span style="color:var(--tx3);font-size:13px">אין</span>';
-  const el=document.getElementById('aCatItems');if(!D.cats.length){el.innerHTML='<div class="aep">הוסיפו קטגוריה</div>';return;}
-  el.innerHTML=D.cats.map((cat,ci)=>{let h=`<div class="acard"><div style="flex:1;min-width:140px"><h4>${cat.name}</h4><small>${(cat.imgs||[]).length} תמונות</small></div><div class="acact"><button class="upbtn" data-up="${ci}" onclick="upCat(${ci})">+ העלאה</button><button class="upbtn" onclick="setCover(${ci})">רקע</button></div>`;
-    if(cat.coverImg)h+=`<div class="cat-cover-wrap" style="width:100%"><span style="font-size:11px;color:var(--tx3)">רקע:</span><img src="${cat.coverImg}"><span class="rm" onclick="rmCover(${ci})" style="cursor:pointer;color:var(--tx3)">×</span></div>`;
-    if(cat.imgs&&cat.imgs.length)h+=`<div class="proj-imgs" style="width:100%">${cat.imgs.map((img,ii)=>`<span class="pimg"><img src="${img}"><span class="ximg" onclick="event.stopPropagation();rmImg(${ci},${ii})">×</span></span>`).join('')}</div>`;
+  // Product category selector
+  const sel=document.getElementById('nProdCat');
+  if(sel)sel.innerHTML=D.cats.map((c,i)=>`<option value="${i}">${c.name}</option>`).join('');
+  // Products list
+  const el=document.getElementById('aProdList');
+  let all=[];D.cats.forEach((cat,ci)=>(cat.products||[]).forEach((p,pi)=>all.push({cat,ci,p,pi})));
+  if(!all.length){el.innerHTML='<div class="aep">אין מוצרים עדיין. הוסיפו מוצר למעלה.</div>';return;}
+  el.innerHTML=all.map(({cat,ci,p,pi})=>{
+    let h=`<div class="acard"><div style="flex:1;min-width:140px"><h4>${p.name}</h4><small>${cat.name} · ${(p.imgs||[]).length} תמונות</small></div>
+    <div class="acact"><button class="upbtn" onclick="upProdImg(${ci},${pi})">+ תמונה</button><button style="border-color:#b33;color:#b33" onclick="rmProd(${ci},${pi})">מחק</button></div>`;
+    if(p.imgs&&p.imgs.length)h+=`<div class="proj-imgs" style="width:100%">${p.imgs.map((img,ii)=>`<span class="pimg"><img src="${img}"><span class="ximg" onclick="event.stopPropagation();rmProdImg(${ci},${pi},${ii})">×</span></span>`).join('')}</div>`;
     return h+'</div>';}).join('');
 }
-async function addCat(){const n=document.getElementById('nCatName').value.trim();if(!n)return;D.cats.push({name:n,coverImg:'',imgs:[]});document.getElementById('nCatName').value='';await saveD();rAG();}
-async function rmCat(i){if(!confirm('למחוק "'+D.cats[i].name+'"?'))return;D.cats.splice(i,1);await saveD();rAG();}
+async function addCat(){const n=document.getElementById('nCatName').value.trim();if(!n)return;D.cats.push({name:n,coverImg:'',products:[]});document.getElementById('nCatName').value='';await saveD();rAG();}
+async function rmCat(i){if(!confirm('למחוק "'+D.cats[i].name+'" וכל המוצרים?'))return;D.cats.splice(i,1);await saveD();rAG();}
+async function addProd(){const name=document.getElementById('nProdName').value.trim(),ci=parseInt(document.getElementById('nProdCat').value);if(!name||isNaN(ci))return;if(!D.cats[ci].products)D.cats[ci].products=[];D.cats[ci].products.push({name,imgs:[]});document.getElementById('nProdName').value='';await saveD();rAG();}
+async function rmProd(ci,pi){if(!confirm('למחוק?'))return;D.cats[ci].products.splice(pi,1);await saveD();rAG();}
 
 async function uploadToImgBB(file){const key=D.imgbbKey;if(!key)return null;const fd=new FormData();fd.append('image',file);try{const r=await fetch('https://api.imgbb.com/1/upload?key='+key,{method:'POST',body:fd});const j=await r.json();return j.success?j.data.url:null;}catch(e){return null;}}
-function upCat(ci){
-  if(!D.imgbbKey){const u=prompt('הדביקו קישור לתמונה:');if(u&&u.trim()){if(!D.cats[ci].imgs)D.cats[ci].imgs=[];D.cats[ci].imgs.push(u.trim());saveD();rAG();}return;}
+function upProdImg(ci,pi){
+  if(!D.imgbbKey){const u=prompt('הדביקו קישור לתמונה:');if(u&&u.trim()){D.cats[ci].products[pi].imgs.push(u.trim());saveD();rAG();}return;}
   const inp=document.createElement('input');inp.type='file';inp.accept='image/*';inp.multiple=true;
-  inp.onchange=async()=>{const files=[...inp.files];if(!files.length)return;const btn=document.querySelector(`[data-up="${ci}"]`);if(btn){btn.classList.add('uploading');btn.textContent='מעלה...';}for(const f of files){const url=await uploadToImgBB(f);if(url){if(!D.cats[ci].imgs)D.cats[ci].imgs=[];D.cats[ci].imgs.push(url);}}await saveD();rAG();};inp.click();
+  inp.onchange=async()=>{const files=[...inp.files];if(!files.length)return;for(const f of files){const url=await uploadToImgBB(f);if(url)D.cats[ci].products[pi].imgs.push(url);}await saveD();rAG();};inp.click();
 }
-function setCover(ci){
-  if(!D.imgbbKey){const u=prompt('קישור לתמונת רקע:');if(u&&u.trim()){D.cats[ci].coverImg=u.trim();saveD();rAG();}return;}
-  const inp=document.createElement('input');inp.type='file';inp.accept='image/*';inp.onchange=async()=>{const f=inp.files[0];if(!f)return;const url=await uploadToImgBB(f);if(url){D.cats[ci].coverImg=url;await saveD();rAG();}};inp.click();
-}
-async function rmCover(ci){D.cats[ci].coverImg='';await saveD();rAG();}
-async function rmImg(ci,ii){D.cats[ci].imgs.splice(ii,1);await saveD();rAG();}
+async function rmProdImg(ci,pi,ii){D.cats[ci].products[pi].imgs.splice(ii,1);await saveD();rAG();}
 
 function rMs(){const c=document.getElementById('aMsL');if(!D.messages||!D.messages.length){c.innerHTML='<div class="aep">אין הודעות</div>';return;}c.innerHTML=D.messages.map((m,i)=>`<div class="amsg ${!m.read?'nw':''}" onclick="mRd(${i})"><div class="amsg-t"><span>${m.date}</span><span>${!m.read?'חדש':'נקרא'}</span></div><h4>${m.name}</h4><a href="mailto:${m.email}">${m.email}</a><p>${m.message}</p></div>`).join('');}
 async function mRd(i){D.messages[i].read=true;await saveD();updateBdg();rMs();}
