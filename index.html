@@ -88,6 +88,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:900;background:var(--nav);backdr
 .cart-item-rm{background:none;border:none;color:var(--tx3);font-size:10.5px;margin-top:5px;transition:color .2s;padding:0}.cart-item-rm:hover{color:#b33}
 .cart-footer{padding:14px 22px;border-top:1px solid var(--ln)}
 .cart-footer p{font-size:11.5px;color:var(--tx3);text-align:center;font-weight:300}
+.cart-order-btn{width:100%;background:var(--ac);color:#fff;border:none;font-family:var(--font);font-size:13.5px;font-weight:500;letter-spacing:.5px;padding:13px;border-radius:3px;transition:all .3s var(--ease);margin-bottom:10px;display:flex;align-items:center;justify-content:center;gap:8px}
+.cart-order-btn:hover{opacity:.88;transform:translateY(-1px);box-shadow:0 4px 15px rgba(155,123,86,.3)}
+.cart-order-btn:disabled{opacity:.5;pointer-events:none}
+.cart-order-btn svg{width:16px;height:16px}
+.cart-order-note{width:100%;background:var(--inp);border:1px solid var(--ln);border-radius:2px;padding:9px 12px;font-family:var(--font);font-size:13px;font-weight:300;color:var(--tx);resize:vertical;min-height:60px;margin-bottom:10px;transition:border-color .3s}
+.cart-order-note:focus{outline:none;border-color:var(--ac)}
+.cart-order-note::placeholder{color:var(--tx3)}
 @media(max-width:480px){.cart-panel{width:100%}}
 
 /* Toast */
@@ -272,7 +279,7 @@ footer{padding:36px 0;text-align:center;font-size:11.5px;color:var(--tx3);font-w
 <div class="cart-panel" id="cartPanel">
   <div class="cart-head"><h3>הסל שלי</h3><button class="cart-close" onclick="toggleCart()">✕</button></div>
   <div class="cart-body" id="cartBody"><div class="cart-empty">הסל ריק</div></div>
-  <div class="cart-footer"><p>הפריטים נשמרים בחשבון שלך</p></div>
+  <div class="cart-footer" id="cartFooter"><p>הפריטים נשמרים בחשבון שלך</p></div>
 </div>
 <div class="toast" id="toast">שגיאה בהתחברות</div>
 
@@ -413,10 +420,51 @@ function addToCart(ci,ii){
 }
 function rmCart(i){cart.splice(i,1);saveCart();renderCart();}
 function renderCart(){
-  const body=document.getElementById('cartBody'),badge=document.getElementById('cartBadge');
+  const body=document.getElementById('cartBody'),badge=document.getElementById('cartBadge'),footer=document.getElementById('cartFooter');
   badge.textContent=cart.length;badge.style.display=cart.length?'flex':'none';
-  if(!cart.length){body.innerHTML='<div class="cart-empty">הסל ריק</div>';return;}
+  if(!cart.length){
+    body.innerHTML='<div class="cart-empty">הסל ריק</div>';
+    footer.innerHTML='<p>הפריטים נשמרים בחשבון שלך</p>';
+    return;
+  }
   body.innerHTML=cart.map((it,i)=>`<div class="cart-item"><img src="${it.img}" alt=""><div class="cart-item-info"><div class="cart-item-name">${it.catName}</div><div class="cart-item-cat">פריט #${it.ii+1}</div><button class="cart-item-rm" onclick="rmCart(${i})">הסר מהסל</button></div></div>`).join('');
+  footer.innerHTML=`<textarea class="cart-order-note" id="orderNote" placeholder="הערות להזמנה (לא חובה)..." dir="rtl"></textarea>
+    <button class="cart-order-btn" id="orderBtn" onclick="sendOrder()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>שלח הזמנה (${cart.length} פריטים)</button>
+    <p>הפריטים נשמרים בחשבון שלך</p>`;
+}
+async function sendOrder(){
+  if(!cart.length){showToast('הסל ריק');return;}
+  const btn=document.getElementById('orderBtn');
+  btn.disabled=true;btn.innerHTML='שולח...';
+  const note=document.getElementById('orderNote')?document.getElementById('orderNote').value.trim():'';
+  const userName=currentUser?currentUser.displayName:'אורח';
+  const userEmail=currentUser?currentUser.email:'לא ידוע';
+  const itemsList=cart.map((it,i)=>`${i+1}. ${it.catName} — פריט #${it.ii+1}\n   תמונה: ${it.img}`).join('\n');
+  const msgBody=`הזמנה חדשה!\n\nשם: ${userName}\nמייל: ${userEmail}\n\nפריטים (${cart.length}):\n${itemsList}\n\n${note?'הערות: '+note:'(ללא הערות)'}`;
+  let sent=false;
+  if(D.w3key){
+    try{
+      const r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({access_key:D.w3key,subject:'הזמנה חדשה מ-'+userName+' ('+cart.length+' פריטים)',from_name:userName,replyto:userEmail,name:userName,email:userEmail,message:msgBody})});
+      const j=await r.json();sent=j.success;
+    }catch(e){console.error(e);}
+  }
+  if(D.ctc.email&&!sent){
+    const mailSubject=encodeURIComponent('הזמנה חדשה מ-'+userName);
+    const mailBody=encodeURIComponent(msgBody);
+    window.open('mailto:'+D.ctc.email+'?subject='+mailSubject+'&body='+mailBody);
+    sent=true;
+  }
+  if(sent){
+    showToast('ההזמנה נשלחה בהצלחה!');
+    if(fbDb&&currentUser){
+      try{await fbDb.collection('orders').doc().set({userId:currentUser.uid,userName,userEmail,items:cart,note,createdAt:firebase.firestore.FieldValue.serverTimestamp()});}catch(e){}
+    }
+    cart=[];saveCart();renderCart();toggleCart();
+  }else{
+    showToast('שגיאה בשליחה — נסו שוב');
+    btn.disabled=false;btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>שלח הזמנה';
+  }
 }
 function toggleCart(){document.getElementById('cartPanel').classList.toggle('on');document.getElementById('cartOverlay').classList.toggle('on');}
 
