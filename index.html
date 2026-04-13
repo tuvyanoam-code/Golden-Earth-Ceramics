@@ -286,6 +286,9 @@ async function init(){
   const ls=document.getElementById('loadingScreen');
   ls.style.opacity='0'; setTimeout(()=>ls.remove(),500);
 
+  // Always start at top
+  history.replaceState(null,null,' ');window.scrollTo(0,0);
+
   if(location.search.includes('admin')) tryAdmin();
 }
 
