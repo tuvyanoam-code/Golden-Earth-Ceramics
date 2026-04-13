@@ -15,10 +15,11 @@ body{font-family:var(--font);background:var(--bg);color:var(--tx);line-height:1.
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--tx3);border-radius:3px}
 a{color:inherit;text-decoration:none}
 button{cursor:pointer;font-family:var(--font)}
-img{display:block;max-width:100%}
-.ctrls{position:fixed;top:16px;left:16px;z-index:1000;display:flex;gap:1px;border-radius:3px;overflow:hidden;box-shadow:var(--sh)}
+img{display:block;max-width:100%;border-radius:6px}
+.cat-row,.cm-img-wrap,.cart-item img,.acard,.atag,.authb,.discover-btn,.fbtn,.cat-modal-grid img,.ff input,.ff textarea{border-radius:8px!important}
+.cat-row img.cat-cover{border-radius:0!important}
+.ctrls{display:flex;gap:1px;border-radius:3px;overflow:hidden}
 .cb{background:var(--bg3);border:none;color:var(--tx2);font-size:11px;font-weight:500;letter-spacing:.6px;padding:7px 13px;transition:all .25s;text-transform:uppercase}.cb:hover{color:var(--ac)}.cb.on{color:var(--ac);background:var(--ac2)}
-@media(max-width:768px){.ctrls{position:static;order:2;box-shadow:none;border-radius:0;gap:0}.cb{padding:6px 10px;font-size:10px}}
 nav{position:fixed;top:0;left:0;right:0;z-index:900;background:var(--nav);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);border-bottom:1px solid var(--ln);transition:all .4s var(--ease)}
 .ni{max-width:1060px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:56px}
 .nlogo{font-size:15px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--tx);flex-shrink:0;position:relative;user-select:none;-webkit-user-select:none}
@@ -29,8 +30,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:900;background:var(--nav);backdr
 .nlinks a{font-size:12.5px;font-weight:400;letter-spacing:.3px;color:var(--tx3);transition:color .3s;position:relative}
 .nlinks a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1px;background:var(--ac);transform:scaleX(0);transition:transform .3s var(--ease)}
 .nlinks a:hover,.nlinks a.on{color:var(--tx)}.nlinks a:hover::after,.nlinks a.on::after{transform:scaleX(1)}
-.mmbtn{display:none;background:none;border:none;color:var(--tx);font-size:12px;letter-spacing:.5px;text-transform:uppercase}
-@media(max-width:768px){.ni{padding:0 16px;flex-wrap:wrap;height:auto;min-height:56px;gap:0}.nlogo{font-size:13px;letter-spacing:.8px;padding:16px 0}.nlinks{display:none;width:100%;order:3}.nlinks.open{display:flex;flex-direction:column;padding:0 0 14px;gap:12px;border-top:1px solid var(--ln);padding-top:12px;align-items:start}.mmbtn{display:block;margin-inline-start:auto}}
+.mmbtn{display:none;background:none;border:none;color:var(--tx);padding:4px}
+@media(max-width:768px){.ni{padding:0 16px;flex-wrap:wrap;height:auto;min-height:56px;gap:0}.nlogo{font-size:13px;letter-spacing:.8px;padding:16px 0}.user-bar{margin-inline-start:auto;gap:8px}.nlinks{display:none;width:100%;order:3}.nlinks.open{display:flex;flex-direction:column;padding:0 0 14px;gap:12px;border-top:1px solid var(--ln);padding-top:12px;align-items:start}.mmbtn{display:flex}.ctrls{position:static;box-shadow:none;border-radius:0;gap:0}.cb{padding:6px 10px;font-size:10px}}
 .user-bar{display:flex;align-items:center;gap:10px;margin-inline-start:8px}
 .nsep{width:1px;height:18px;background:var(--ln);margin:0 4px}
 .login-btn{background:none;border:1px solid var(--ac);color:var(--ac);font-family:var(--font);font-size:11px;font-weight:500;letter-spacing:.4px;padding:5px 13px;border-radius:2px;transition:all .3s;display:flex;align-items:center;gap:5px;white-space:nowrap}.login-btn:hover{background:var(--ac);color:#fff}.login-btn svg{width:13px;height:13px}
@@ -59,7 +60,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:900;background:var(--nav);backdr
 .cart-order-note{width:100%;background:var(--inp);border:1px solid var(--ln);border-radius:2px;padding:9px 12px;font-family:var(--font);font-size:13px;font-weight:300;color:var(--tx);resize:vertical;min-height:60px;margin-bottom:10px;transition:border-color .3s}.cart-order-note:focus{outline:none;border-color:var(--ac)}.cart-order-note::placeholder{color:var(--tx3)}
 @media(max-width:480px){.cart-panel{width:100%}}
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--toast-bg);color:var(--toast-tx);font-size:13px;font-weight:400;padding:10px 22px;border-radius:4px;z-index:9000;opacity:0;transition:all .35s var(--ease);pointer-events:none;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,.15)}.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:130px 40px 60px}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:130px 40px 60px;position:relative;background-size:cover;background-position:center}
+.hero-overlay{position:absolute;inset:0;background:var(--bg);transition:background .5s}.hero-has-bg .hero-overlay{background:rgba(0,0,0,.45)}.hero>*:not(.hero-overlay){position:relative;z-index:1}
+.hero-has-bg .hero-label,.hero-has-bg .hero-sub{color:rgba(255,255,255,.7)}.hero-has-bg h1{color:#fff}.hero-has-bg .discover-btn{border-color:rgba(255,255,255,.5);color:#fff}.hero-has-bg .discover-btn:hover{background:rgba(255,255,255,.15)}.hero-has-bg .discover-arrow svg{color:rgba(255,255,255,.5)}.hero-has-bg .hero-line{background:rgba(255,255,255,.3)}
 .hero-label{font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--ac);margin-bottom:24px;opacity:0;animation:fu .7s var(--ease) .2s forwards}
 .hero h1{font-family:var(--fontH);font-size:clamp(36px,6vw,72px);font-weight:300;line-height:1.18;margin-bottom:20px;opacity:0;animation:fu .7s var(--ease) .35s forwards}.hero h1 em{font-style:normal;font-weight:600}
 .hero-sub{font-size:17px;font-weight:300;color:var(--tx2);max-width:480px;line-height:1.9;opacity:0;animation:fu .7s var(--ease) .5s forwards}
@@ -91,6 +94,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:900;background:var(--nav);backdr
 .cat-modal-empty{color:rgba(255,255,255,.25);font-size:14px;font-weight:300;text-align:center;padding:80px 20px}
 .cm-prod-info{position:absolute;bottom:0;left:0;right:0;padding:12px;background:linear-gradient(to top,rgba(0,0,0,.6),transparent);pointer-events:none}.cm-prod-name{color:#fff;font-size:13px;font-weight:500}.cm-prod-count{color:rgba(255,255,255,.5);font-size:10.5px;margin-inline-start:6px}
 .prod-modal{z-index:2050}
+.prod-slider{position:relative;max-width:600px;margin:0 auto;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.prod-slider>img{width:100%;max-height:70vh;object-fit:contain;border-radius:8px;cursor:pointer}
+.ps-arr{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.5);backdrop-filter:blur(4px);border:none;color:#fff;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;z-index:2;transition:background .2s}.ps-arr:hover{background:rgba(0,0,0,.7)}.ps-arr svg{width:20px;height:20px}
+.ps-prev{left:12px}.ps-next{right:12px}
+.ps-dots{display:flex;gap:6px;margin-top:16px}.ps-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);cursor:pointer;transition:background .2s}.ps-dot.on{background:var(--ac)}
+.ps-counter{color:rgba(255,255,255,.4);font-size:12px;margin-top:8px}
 @media(max-width:768px){.cat-modal-inner{padding:40px 16px 60px}.cat-modal-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:4px}}
 .fv{position:fixed;inset:0;z-index:2100;background:rgba(0,0,0,.96);display:none;align-items:center;justify-content:center;cursor:pointer}.fv.on{display:flex}.fv img{max-width:90%;max-height:90vh;object-fit:contain}
 .cclay{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}.cch3{font-size:20px;font-weight:400;margin-bottom:18px}.ccp{font-size:14.5px;font-weight:300;color:var(--tx2);line-height:1.8;margin-bottom:32px}.ccl{font-size:13.5px;color:var(--tx2);margin-bottom:10px;font-weight:300}.ccl strong{font-weight:500;color:var(--tx);display:inline-block;min-width:55px}
@@ -106,6 +115,7 @@ footer{padding:36px 0;text-align:center;font-size:11.5px;color:var(--tx3);font-w
 .authc{margin-top:12px;font-size:12px;color:var(--tx3);cursor:pointer;background:none;border:none;font-family:var(--font);transition:color .2s}.authc:hover{color:var(--tx)}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 .adm{position:fixed;inset:0;z-index:5000;background:var(--bg);display:none;overflow:hidden}.adm.on{display:flex}
+.adm-toggle{display:none;position:absolute;top:12px;right:12px;z-index:10;background:var(--bg3);border:1px solid var(--ln);color:var(--tx2);width:34px;height:34px;border-radius:6px;align-items:center;justify-content:center;font-size:18px}
 .ads{width:220px;background:var(--bg2);border-inline-end:1px solid var(--ln);padding:28px 0;overflow-y:auto;flex-shrink:0;display:flex;flex-direction:column}
 .adst{padding:0 22px 22px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--ac);border-bottom:1px solid var(--ln);margin-bottom:6px}
 .atb{width:100%;text-align:start;background:none;border:none;font-family:var(--font);font-size:13.5px;color:var(--tx2);padding:11px 22px;transition:all .2s}.atb:hover{color:var(--tx);background:var(--ac2)}.atb.on{color:var(--ac);background:var(--ac2)}
@@ -129,7 +139,7 @@ footer{padding:36px 0;text-align:center;font-size:11.5px;color:var(--tx3);font-w
 .cat-cover-wrap{margin-top:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}.cat-cover-wrap img{width:80px;height:50px;object-fit:cover;border-radius:2px;border:1px solid var(--ln)}
 .loading-screen{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;transition:opacity .5s}.loading-screen .spinner{width:28px;height:28px;border:2px solid var(--ln);border-top-color:var(--ac);border-radius:50%;animation:spin .8s linear infinite}.loading-screen p{font-size:13px;color:var(--tx3);font-weight:300}
 @keyframes spin{to{transform:rotate(360deg)}}
-@media(max-width:768px){.ads{width:170px}.adm-main{padding:20px}}
+@media(max-width:768px){.ads{width:170px}.adm-main{padding:20px}.adm-toggle{display:flex}.ads{position:absolute;top:0;bottom:0;z-index:6;transition:transform .3s var(--ease);transform:translateX(100%)}[dir="rtl"] .ads{right:0}[dir="ltr"] .ads{left:0;transform:translateX(-100%)}.ads.open{transform:translateX(0)!important}}
 @keyframes fu{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}.rv{opacity:0;transform:translateY(14px);transition:opacity .65s var(--ease),transform .65s var(--ease)}.rv.vis{opacity:1;transform:translateY(0)}
 </style>
 </head>
@@ -143,30 +153,31 @@ footer{padding:36px 0;text-align:center;font-size:11.5px;color:var(--tx3);font-w
     <span id="nLogoTxt"></span><div class="nlogo-bar" id="lpBar"></div>
     <div class="admin-pop" id="adminPop" onclick="event.preventDefault();event.stopPropagation();tryAdmin();">Admin</div>
   </a>
-  <div class="ctrls"><button class="cb on" id="cL" onclick="setTh('light')">Day</button><button class="cb" id="cD" onclick="setTh('dark')">Night</button></div>
-  <div class="nlinks" id="nLinks">
-    <a href="#catalog" data-n="cat">קולקציה</a><a href="#contact" data-n="ctc">צור קשר</a><span class="nsep"></span>
-    <div class="user-bar" id="userBar">
-      <button class="cart-btn" onclick="toggleCart()" title="סל"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg><span class="cart-badge" id="cartBadge" style="display:none">0</span></button>
-      <button class="login-btn" id="loginBtn" onclick="googleSignIn()"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z"/></svg>התחברות</button>
-      <div id="userLoggedIn" style="display:none;position:relative">
-        <img class="user-avatar" id="userAvatar" src="" alt="" onclick="toggleUserDrop()">
-        <div class="user-drop" id="userDrop">
-          <div class="ud-head"><img id="udPhoto" src="" alt=""><div><div class="ud-name" id="udName"></div><div class="ud-email" id="udEmail"></div></div></div>
-          <button class="ud-item" onclick="toggleCart();toggleUserDrop()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg>הסל שלי</button>
-          <button class="ud-item logout" onclick="googleSignOut()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>התנתקות</button>
-        </div>
+  <!-- User bar always visible -->
+  <div class="user-bar" id="userBar">
+    <button class="cart-btn" onclick="toggleCart()" title="סל"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg><span class="cart-badge" id="cartBadge" style="display:none">0</span></button>
+    <button class="login-btn" id="loginBtn" onclick="googleSignIn()"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z"/></svg>התחברות</button>
+    <div id="userLoggedIn" style="display:none;position:relative">
+      <img class="user-avatar" id="userAvatar" src="" alt="" onclick="toggleUserDrop()">
+      <div class="user-drop" id="userDrop">
+        <div class="ud-head"><img id="udPhoto" src="" alt=""><div><div class="ud-name" id="udName"></div><div class="ud-email" id="udEmail"></div></div></div>
+        <button class="ud-item" onclick="toggleCart();toggleUserDrop()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/></svg>הסל שלי</button>
+        <button class="ud-item logout" onclick="googleSignOut()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>התנתקות</button>
       </div>
     </div>
+    <button class="mmbtn" onclick="document.getElementById('nLinks').classList.toggle('open')"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
   </div>
-  <button class="mmbtn" onclick="document.getElementById('nLinks').classList.toggle('open')">Menu</button>
+  <div class="nlinks" id="nLinks">
+    <a href="#catalog" data-n="cat">קולקציה</a><a href="#contact" data-n="ctc">צור קשר</a>
+    <div class="ctrls"><button class="cb on" id="cL" onclick="setTh('light')">Day</button><button class="cb" id="cD" onclick="setTh('dark')">Night</button></div>
+  </div>
 </div></nav>
 
 <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
 <div class="cart-panel" id="cartPanel"><div class="cart-head"><h3>הסל שלי</h3><button class="cart-close" onclick="toggleCart()">✕</button></div><div class="cart-body" id="cartBody"><div class="cart-empty">הסל ריק</div></div><div class="cart-footer" id="cartFooter"><p>הפריטים נשמרים בחשבון שלך</p></div></div>
 <div class="toast" id="toast"></div>
 
-<section class="hero" id="hero"><div class="hero-label" id="hLabel"></div><h1 id="hTitle"></h1><p class="hero-sub" id="hDesc"></p><div class="hero-line"></div><div class="discover-wrap"><a href="#catalog"><button class="discover-btn" id="discoverBtn">להתגלות</button></a><div class="discover-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div></div></section>
+<section class="hero" id="hero"><div class="hero-overlay"></div><div class="hero-label" id="hLabel"></div><h1 id="hTitle"></h1><p class="hero-sub" id="hDesc"></p><div class="hero-line"></div><div class="discover-wrap"><a href="#catalog"><button class="discover-btn" id="discoverBtn">להתגלות</button></a><div class="discover-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg></div></div></section>
 <section class="sec" id="catalog"><div class="ctn rv"><div class="cat-list" id="catList"></div></div></section>
 <section class="sec" id="contact"><div class="ctn rv"><div class="slbl" id="ccLbl"></div><h2 id="ccTtl"></h2><p class="sdesc" id="ccDsc"></p><div class="cclay"><div><h3 class="cch3" id="ccH"></h3><p class="ccp" id="ccP"></p><div class="ccl"><strong id="ccEL">דוא״ל</strong> <span id="ccE"></span></div><div class="ccl"><strong id="ccPL">טלפון</strong> <span id="ccPh"></span></div></div><div><div id="fWrap"><div class="ff"><label id="flN">שם מלא</label><input id="fN" dir="rtl"></div><div class="ff"><label id="flE">דוא״ל</label><input id="fE" type="email" dir="rtl"></div><div class="ff"><label id="flM">הודעה</label><textarea id="fM" dir="rtl"></textarea></div><button class="fbtn" onclick="sendForm()" id="fBtn">שליחת פנייה</button></div><div class="fok" id="fOk"><h4 id="foT">הפנייה נשלחה!</h4><p id="foP">נחזור אליכם בהקדם.</p></div></div></div></div></section>
 <footer><div class="ctn"><span id="ftr"></span></div></footer>
@@ -176,7 +187,7 @@ footer{padding:36px 0;text-align:center;font-size:11.5px;color:var(--tx3);font-w
 <div class="fv" id="fvw" onclick="this.classList.remove('on')"><img id="fvI"></div>
 <div class="authm" id="authM"><div class="authb"><h3>ניהול האתר</h3><p>הזינו את קוד הגישה</p><input type="password" id="auIn" maxlength="20" placeholder="····" onkeydown="if(event.key==='Enter')checkAuth()"><button class="authbtn" onclick="checkAuth()">כניסה</button><button class="authc" onclick="closeAuth()">ביטול</button></div></div>
 
-<div class="adm" id="admP"><aside class="ads"><div class="adst">ניהול</div>
+<div class="adm" id="admP"><button class="adm-toggle" onclick="document.querySelector('.ads').classList.toggle('open')">☰</button><aside class="ads"><div class="adst">ניהול</div>
 <button class="atb on" onclick="sp('pH',this)">כותרת ראשית</button>
 <button class="atb" onclick="sp('pG',this)">קטגוריות ומוצרים</button>
 <button class="atb" onclick="sp('pC',this)">צור קשר</button>
@@ -184,7 +195,7 @@ footer{padding:36px 0;text-align:center;font-size:11.5px;color:var(--tx3);font-w
 <button class="atb" onclick="sp('pPw',this)">הגדרות</button>
 <button class="adbk" onclick="clAdmin()">→ חזרה לאתר</button></aside>
 <main class="adm-main">
-<div class="adp on" id="pH"><h2>כותרת ראשית</h2><p class="sub">תוכן ופונטים</p><div class="af"><label>שם האתר</label><input id="aLoHe"></div><div class="af"><label>תווית</label><input id="aLbHe"></div><div class="af"><label>כותרת ראשית</label><input id="aTiHe"></div><div class="af"><label>תיאור קצר</label><textarea id="aDsHe"></textarea></div><div class="af"><label>טקסט כפתור</label><input id="aDiscBtn"></div><hr class="adiv"><div class="af"><label>פונט כותרות</label><select id="aFontH"><option>Cormorant Garamond</option><option>Assistant</option><option>Heebo</option><option>Frank Ruhl Libre</option><option>Rubik</option><option>Secular One</option><option>Alef</option><option>Suez One</option><option>Amatic SC</option></select></div><div class="af"><label>פונט גוף</label><select id="aFontB"><option>Assistant</option><option>Heebo</option><option>Rubik</option><option>Frank Ruhl Libre</option><option>Alef</option></select></div><button class="asv" onclick="svH()">שמור</button><span class="aok" id="okH">נשמר</span></div>
+<div class="adp on" id="pH"><h2>כותרת ראשית</h2><p class="sub">תוכן ופונטים</p><div class="af"><label>שם האתר</label><input id="aLoHe"></div><div class="af"><label>תווית</label><input id="aLbHe"></div><div class="af"><label>כותרת ראשית</label><input id="aTiHe"></div><div class="af"><label>תיאור קצר</label><textarea id="aDsHe"></textarea></div><div class="af"><label>טקסט כפתור</label><input id="aDiscBtn"></div><hr class="adiv"><div class="af"><label>תמונת רקע (אופציונלי)</label><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><button class="upbtn" onclick="upHeroBg()">+ העלאת תמונה</button><span id="heroBgPreview"></span></div></div><hr class="adiv"><div class="af"><label>פונט כותרות</label><select id="aFontH"><option>Cormorant Garamond</option><option>Assistant</option><option>Heebo</option><option>Frank Ruhl Libre</option><option>Rubik</option><option>Secular One</option><option>Alef</option><option>Suez One</option><option>Amatic SC</option></select></div><div class="af"><label>פונט גוף</label><select id="aFontB"><option>Assistant</option><option>Heebo</option><option>Rubik</option><option>Frank Ruhl Libre</option><option>Alef</option></select></div><button class="asv" onclick="svH()">שמור</button><span class="aok" id="okH">נשמר</span></div>
 <div class="adp" id="pG"><h2>קטגוריות ומוצרים</h2><p class="sub">הוסיפו קטגוריות, מוצרים ותמונות</p><h4 style="font-weight:500;margin-bottom:10px">קטגוריות</h4><div id="aCatList"></div><div class="arow"><div class="af" style="margin:0"><label>שם הקטגוריה</label><input id="nCatName" style="max-width:200px"></div><button class="asb" onclick="addCat()">+ הוסף</button></div><hr class="adiv"><h4 style="font-weight:500;margin-bottom:10px">מוצרים</h4><div class="arow"><div class="af" style="margin:0"><label>שם המוצר</label><input id="nProdName" style="max-width:180px"></div><div class="af" style="margin:0"><label>קטגוריה</label><select id="nProdCat" style="max-width:160px"></select></div><button class="asb" onclick="addProd()">+ הוסף מוצר</button></div><div id="aProdList"></div></div>
 <div class="adp" id="pC"><h2>צור קשר</h2><p class="sub">פרטי התקשרות</p><div class="af"><label>כותרת</label><input id="aCcHhe"></div><div class="af"><label>תיאור</label><textarea id="aCcPhe"></textarea></div><div class="af"><label>תיאור קצר</label><textarea id="aCcDhe"></textarea></div><div class="af"><label>דוא״ל</label><input id="aCcE"></div><div class="af"><label>טלפון</label><input id="aCcPh"></div><button class="asv" onclick="svC()">שמור</button><span class="aok" id="okC">נשמר</span></div>
 <div class="adp" id="pM"><h2>הודעות</h2><p class="sub">פניות מהטופס</p><div id="aMsL"></div></div>
@@ -380,7 +391,12 @@ function render(){
   const $=id=>document.getElementById(id);
   $('nLogoTxt').textContent=D.logo;$('hLabel').textContent=D.hero.label;$('hTitle').innerHTML=D.hero.title;$('hDesc').textContent=D.hero.desc;$('discoverBtn').textContent=D.hero.discoverBtn||'להתגלות';
   $('ccLbl').textContent=D.ctc.label;$('ccTtl').textContent=D.ctc.title;$('ccDsc').textContent=D.ctc.desc;$('ccH').textContent=D.ctc.sideTitle;$('ccP').textContent=D.ctc.sideText;$('ccE').textContent=D.ctc.email;$('ccPh').textContent=D.ctc.phone;
-  $('ftr').textContent='© '+new Date().getFullYear()+' — '+D.logo;renderCats();
+  $('ftr').textContent='© '+new Date().getFullYear()+' — '+D.logo;
+  // Hero background
+  const heroEl=$('hero');
+  if(D.hero.bgImg){heroEl.style.backgroundImage='url('+D.hero.bgImg+')';heroEl.classList.add('hero-has-bg');}
+  else{heroEl.style.backgroundImage='';heroEl.classList.remove('hero-has-bg');}
+  renderCats();
 }
 function renderCats(){
   const l=document.getElementById('catList');if(!D.cats||!D.cats.length){l.innerHTML='<div class="aep">עדיין לא הוגדרו קטגוריות</div>';return;}
@@ -406,17 +422,32 @@ function closeCatModal(){document.getElementById('catModal').classList.remove('o
 function addToCartFromGrid(ci,pi,btn){addToCart(ci,pi);if(currentUser){btn.classList.add('added');btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>בסל';}}
 
 // Product detail modal
+let prodImgs=[],prodIdx=0;
 function openProdModal(ci,pi){
   const prod=D.cats[ci].products[pi];
   document.getElementById('pmTitle').textContent=prod.name;
-  const g=document.getElementById('pmImgs');
-  if(!prod.imgs||!prod.imgs.length){g.innerHTML='<div class="cat-modal-empty">אין תמונות</div>';}
-  else{g.innerHTML=prod.imgs.map(src=>`<img src="${src}" style="cursor:pointer" onclick="document.getElementById('fvI').src='${src}';document.getElementById('fvw').classList.add('on')">`).join('');}
+  prodImgs=prod.imgs||[];prodIdx=0;
+  renderProdSlide();
   document.getElementById('prodModal').classList.add('on');
 }
-function closeProdModal(){document.getElementById('prodModal').classList.remove('on');}
+function renderProdSlide(){
+  const g=document.getElementById('pmImgs');
+  if(!prodImgs.length){g.innerHTML='<div class="cat-modal-empty">אין תמונות</div>';return;}
+  g.innerHTML=`<div class="prod-slider">
+    ${prodImgs.length>1?`<button class="ps-arr ps-prev" onclick="prodNav(-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>`:''}
+    <img src="${prodImgs[prodIdx]}" onclick="document.getElementById('fvI').src='${prodImgs[prodIdx]}';document.getElementById('fvw').classList.add('on')">
+    ${prodImgs.length>1?`<button class="ps-arr ps-next" onclick="prodNav(1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>`:''}
+    ${prodImgs.length>1?`<div class="ps-dots">${prodImgs.map((_,i)=>`<span class="ps-dot${i===prodIdx?' on':''}" onclick="prodIdx=${i};renderProdSlide()"></span>`).join('')}</div>`:''}
+    ${prodImgs.length>1?`<div class="ps-counter">${prodIdx+1} / ${prodImgs.length}</div>`:''}
+  </div>`;
+}
+function prodNav(d){prodIdx=(prodIdx+d+prodImgs.length)%prodImgs.length;renderProdSlide();}
+function closeProdModal(){document.getElementById('prodModal').classList.remove('on');prodImgs=[];}
 
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowLeft'&&prodImgs.length>1&&document.getElementById('prodModal').classList.contains('on')){prodNav(1);return;}
+  if(e.key==='ArrowRight'&&prodImgs.length>1&&document.getElementById('prodModal').classList.contains('on')){prodNav(-1);return;}
+  if(e.key==='Escape'){
   if(document.getElementById('fvw').classList.contains('on')){document.getElementById('fvw').classList.remove('on');return;}
   if(document.getElementById('prodModal').classList.contains('on')){closeProdModal();return;}
   if(document.getElementById('catModal').classList.contains('on')){closeCatModal();return;}
@@ -447,12 +478,24 @@ function checkAuth(){const inp=document.getElementById('auIn');if(inp.value===D.
 function closeAuth(){document.getElementById('authM').classList.remove('on');document.getElementById('auIn').value='';}
 function openAdmin(){document.getElementById('admP').classList.add('on');document.body.style.overflow='hidden';populateAdmin();}
 function clAdmin(){document.getElementById('admP').classList.remove('on');document.body.style.overflow='';render();}
-function sp(id,btn){document.querySelectorAll('.adp').forEach(p=>p.classList.remove('on'));document.getElementById(id).classList.add('on');document.querySelectorAll('.atb').forEach(b=>b.classList.remove('on'));btn.classList.add('on');if(id==='pG')rAG();if(id==='pM')rMs();}
+function sp(id,btn){document.querySelectorAll('.adp').forEach(p=>p.classList.remove('on'));document.getElementById(id).classList.add('on');document.querySelectorAll('.atb').forEach(b=>b.classList.remove('on'));btn.classList.add('on');
+  if(window.innerWidth<=768)document.querySelector('.ads').classList.remove('open');
+  if(id==='pG')rAG();if(id==='pM')rMs();}
 function fl(id){const e=document.getElementById(id);e.classList.add('on');setTimeout(()=>e.classList.remove('on'),1500);}
 
 function populateAdmin(){const $=id=>document.getElementById(id);$('aLoHe').value=D.logo;$('aLbHe').value=D.hero.label;$('aTiHe').value=D.hero.title;$('aDsHe').value=D.hero.desc;$('aDiscBtn').value=D.hero.discoverBtn||'';
   if(D.fonts){$('aFontH').value=D.fonts.hero;$('aFontB').value=D.fonts.body;}
+  // Hero bg preview
+  const bp=document.getElementById('heroBgPreview');
+  bp.innerHTML=D.hero.bgImg?`<img src="${D.hero.bgImg}" style="width:80px;height:50px;object-fit:cover;border-radius:4px;border:1px solid var(--ln)"><span class="rm" onclick="rmHeroBg()" style="cursor:pointer;color:var(--tx3);margin-inline-start:4px">×</span>`:'<span style="font-size:11px;color:var(--tx3)">אין תמונה</span>';
   $('aCcHhe').value=D.ctc.sideTitle;$('aCcPhe').value=D.ctc.sideText;$('aCcDhe').value=D.ctc.desc;$('aCcE').value=D.ctc.email;$('aCcPh').value=D.ctc.phone;$('aPwIn').value=D.pw;$('aImgKey').value=D.imgbbKey||'';$('aW3Key').value=D.w3key||'';rAG();}
+
+function upHeroBg(){
+  if(!D.imgbbKey){const u=prompt('הדביקו קישור לתמונת רקע:');if(u&&u.trim()){D.hero.bgImg=u.trim();saveD();populateAdmin();render();}return;}
+  const inp=document.createElement('input');inp.type='file';inp.accept='image/*';
+  inp.onchange=async()=>{const f=inp.files[0];if(!f)return;const url=await uploadToImgBB(f);if(url){D.hero.bgImg=url;await saveD();populateAdmin();render();}};inp.click();
+}
+async function rmHeroBg(){D.hero.bgImg='';await saveD();populateAdmin();render();}
 
 async function svH(){const $=id=>document.getElementById(id).value;D.logo=$('aLoHe');D.hero.label=$('aLbHe');D.hero.title=$('aTiHe');D.hero.desc=$('aDsHe');D.hero.discoverBtn=$('aDiscBtn');
   if(!D.fonts)D.fonts={};D.fonts.hero=$('aFontH');D.fonts.body=$('aFontB');applyFonts();
@@ -463,21 +506,36 @@ async function svImgKey(){D.imgbbKey=document.getElementById('aImgKey').value.tr
 async function svW3Key(){D.w3key=document.getElementById('aW3Key').value.trim();await saveD();fl('okW3K');}
 
 function rAG(){
-  // Categories tags
-  document.getElementById('aCatList').innerHTML=D.cats.map((c,i)=>`<span class="atag">${c.name} <span class="rm" onclick="rmCat(${i})">×</span></span>`).join('')||'<span style="color:var(--tx3);font-size:13px">אין</span>';
+  // Categories tags with edit & cover
+  document.getElementById('aCatList').innerHTML=D.cats.map((c,i)=>{
+    let h=`<span class="atag">${c.name} <span class="rm" onclick="renameCat(${i})" title="עריכה" style="color:var(--ac);cursor:pointer">✎</span> <span class="rm" onclick="rmCat(${i})">×</span></span>`;
+    return h;
+  }).join('')||'<span style="color:var(--tx3);font-size:13px">אין</span>';
   // Product category selector
   const sel=document.getElementById('nProdCat');
   if(sel)sel.innerHTML=D.cats.map((c,i)=>`<option value="${i}">${c.name}</option>`).join('');
+  // Category covers
+  let catCovers=D.cats.map((c,i)=>{
+    let h=`<div class="acard"><div style="flex:1;min-width:120px"><h4>${c.name}</h4><small>תמונת רקע</small></div><div class="acact"><button class="upbtn" onclick="setCatCover(${i})">+ רקע</button></div>`;
+    if(c.coverImg)h+=`<div class="cat-cover-wrap" style="width:100%"><img src="${c.coverImg}"><span class="rm" onclick="rmCatCover(${i})" style="cursor:pointer;color:var(--tx3)">×</span></div>`;
+    return h+'</div>';
+  }).join('');
   // Products list
   const el=document.getElementById('aProdList');
   let all=[];D.cats.forEach((cat,ci)=>(cat.products||[]).forEach((p,pi)=>all.push({cat,ci,p,pi})));
-  if(!all.length){el.innerHTML='<div class="aep">אין מוצרים עדיין. הוסיפו מוצר למעלה.</div>';return;}
-  el.innerHTML=all.map(({cat,ci,p,pi})=>{
+  let prodHtml=all.length?all.map(({cat,ci,p,pi})=>{
     let h=`<div class="acard"><div style="flex:1;min-width:140px"><h4>${p.name}</h4><small>${cat.name} · ${(p.imgs||[]).length} תמונות</small></div>
     <div class="acact"><button class="upbtn" onclick="upProdImg(${ci},${pi})">+ תמונה</button><button style="border-color:#b33;color:#b33" onclick="rmProd(${ci},${pi})">מחק</button></div>`;
     if(p.imgs&&p.imgs.length)h+=`<div class="proj-imgs" style="width:100%">${p.imgs.map((img,ii)=>`<span class="pimg"><img src="${img}"><span class="ximg" onclick="event.stopPropagation();rmProdImg(${ci},${pi},${ii})">×</span></span>`).join('')}</div>`;
-    return h+'</div>';}).join('');
+    return h+'</div>';}).join(''):'<div class="aep">אין מוצרים עדיין.</div>';
+  el.innerHTML=catCovers+'<hr class="adiv"><h4 style="font-weight:500;margin-bottom:10px">מוצרים</h4>'+prodHtml;
 }
+async function renameCat(i){const n=prompt('שם חדש לקטגוריה:',D.cats[i].name);if(n&&n.trim()){D.cats[i].name=n.trim();await saveD();rAG();}}
+function setCatCover(ci){
+  if(!D.imgbbKey){const u=prompt('קישור לתמונת רקע:');if(u&&u.trim()){D.cats[ci].coverImg=u.trim();saveD();rAG();}return;}
+  const inp=document.createElement('input');inp.type='file';inp.accept='image/*';inp.onchange=async()=>{const f=inp.files[0];if(!f)return;const url=await uploadToImgBB(f);if(url){D.cats[ci].coverImg=url;await saveD();rAG();}};inp.click();
+}
+async function rmCatCover(ci){D.cats[ci].coverImg='';await saveD();rAG();}
 async function addCat(){const n=document.getElementById('nCatName').value.trim();if(!n)return;D.cats.push({name:n,coverImg:'',products:[]});document.getElementById('nCatName').value='';await saveD();rAG();}
 async function rmCat(i){if(!confirm('למחוק "'+D.cats[i].name+'" וכל המוצרים?'))return;D.cats.splice(i,1);await saveD();rAG();}
 async function addProd(){const name=document.getElementById('nProdName').value.trim(),ci=parseInt(document.getElementById('nProdCat').value);if(!name||isNaN(ci))return;if(!D.cats[ci].products)D.cats[ci].products=[];D.cats[ci].products.push({name,imgs:[]});document.getElementById('nProdName').value='';await saveD();rAG();}
